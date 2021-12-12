@@ -33,12 +33,12 @@ SUBSTRACTIVE SYNTHESIZER:
 
 This MobMuPlat app is an upgraded version of Kristian's generative subtractive pd synth patch.
 
-- Page 1 sports an one octave keyboard with octave shift buttons. It also has master volume, pitch bend buttons and a mod wheel controlling the amount of LFO modulating the oscillators
+- Page 1 sports an one octave keyboard with octave shift buttons. There is a pitch tilt button, which uses the gyroscope to bend the pitch (left = lower, right = higher). It also has master volume knob, pitch bend buttons and a mod wheel controlling the amount of LFO modulating the oscillators
 pitch. (Vibrato)
 
 - Page 2 is centered around a big oscilloscope, wrapped in generative sound-control. Autoplay turns on the sequencer, and 'rnd seq' randomizes the pattern. The note range slider controls
 the possible range of notes generated when the 'rnd seq' are turned on – where a low setting only generates low-pitched patterns. The speeeeeed slider controls the tempo of the sequencer,
-with slight random fluctuations if the 'rnd seq' is turned on. There is also an 'Init' button, initializing the whole patch including sound sculpting if pressed.
+with slight random fluctuations if the 'rnd seq' is turned on. You can also press the speed tilt button, which uses the gyroscope to control the tempo (back = slower, forth = faster). There is also an 'Init' button, initializing the whole patch including sound sculpting if pressed.
 
 - Page 3 is where you find subtractive synth control, with a X/Y slider controlling the cutoff/resonance. There are individual attack and decay for filter and amp envelopes. The filter has
 an envelope amount slider, while the amp section has a tremolo slider which controls the amount of LFO modulating the oscillator volume. Additionally there is a LFO rate slider (affecting
@@ -49,8 +49,8 @@ ROLES:
 
 - Arvid. He created the PD patch and MobMuplat application for the Ondes Beezenot.
 - Joachim. He created the Musical Bugs PD patch and MobMuPlat application.
-- Kristian. He created the Substractive Sythesizer PD patch and MobMuPlat application.
-- Sofía. She created a MobMuPlat application for one of her patches but the other patches were chosen for this assignment. She colaborated in the MobMuPlat application for the Substractive
+- Kristian. He created the Subtractive Synthesizer PD patch and MobMuPlat application.
+- Sofía. She created a MobMuPlat application for one of her patches but the other patches were chosen for this assignment. She collaborated in the MobMuPlat application for the Subtractive
 Synthesizer.
 
 Everyone helped in the testing of each other's apps.
