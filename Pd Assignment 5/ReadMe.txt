@@ -50,7 +50,7 @@ ROLES:
 - Arvid. He created the PD patch and MobMuplat application for the Ondes Beezenot.
 - Joachim. He created the Musical Bugs PD patch and MobMuPlat application.
 - Kristian. He created the Substractive Sythesizer PD patch and MobMuPlat application.
-- Sofía. She created a MobMuPlat application for one of her patches but other patches were chosen. She colaborated in the MobMuPlat application for the Substractive Synthesizer, especially
-the tilt functions.
+- Sofía. She created a MobMuPlat application for one of her patches but the other patches were chosen for this assignment. She colaborated in the MobMuPlat application for the Substractive
+Synthesizer.
 
 Everyone helped in the testing of each other's apps.
