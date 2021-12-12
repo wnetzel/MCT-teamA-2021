@@ -45,10 +45,10 @@ def spectral_centroid(audio, frame_length, hop_length, sr=44100):
         magnitudes = np.abs(np.fft.fft(cent)) # magnitude of absolute (real) frequency values
         
         # Compute only the positive half of the DFT (i.e 1 + first half)
-        mag = magnitudes[:int(1 + len(magnitudes) // 2)]
+        mag = magnitudes[:int(1 + magnitudes.shape[0] // 2)]
         
         # Compute the center frequencies of each bin
-        freq = np.linspace(0, sr/2, int(1 + len(cent) // 2)) 
+        freq = np.linspace(0, sr/2, int(1 + cent.shape[0] // 2)) 
         
         # Return weighted mean of the frequencies present in the signal
         normalize_mag = mag / np.sum(mag)
@@ -78,10 +78,10 @@ def spectral_bandwidth(audio, frame_length, hop_length, sr=44100, p=2):
         magnitudes = np.abs(np.fft.fft(frame)) # magnitude of absolute (real) frequency values
         
         # Compute only the positive half of the DFT (i.e 1 + first half)
-        mag = magnitudes[:int(1 + len(magnitudes) // 2)]
+        mag = magnitudes[:int(1 + magnitudes.shape[0] // 2)]
         
         # Compute the center frequencies of each bin
-        freq = np.linspace(0, sr/2, int(1 + len(frame) // 2))
+        freq = np.linspace(0, sr/2, int(1 + frame.shape[0] // 2))
         
         # Return weighted mean of the frequencies present in the signal
         normalize_mag = mag / np.sum(mag)

@@ -45,8 +45,6 @@ an envelope amount slider, while the amp section has a tremolo slider which cont
 the vibrato and tremolo), and a FM amount slider. This page also has an oscilloscope where you can see how your sound sculpting affects the sound. Keep the autoplay turned on when
 exploring this page.
 
-
-
 ROLES:
 
 - Arvid. He created the PD patch and MobMuplat application for the Ondes Beezenot.
