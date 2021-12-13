@@ -3,7 +3,7 @@ This package extracts power and frequency characteristics of a signal.
 """
 import numpy as np
 
-def root_mean_square(signal, frame_length, hop_length):
+def root_mean_square(audio, frame_length, hop_length):
 
     """
     Compute root-mean-square (RMS) value from scratch with the following formula, 
@@ -12,18 +12,18 @@ def root_mean_square(signal, frame_length, hop_length):
     
     # Pad with the reflection of the signal so that the frames are centered 
     # Padding is achieved by mirroring on the first and last values of the signal with frame_length // 2 samples     
-    signal = np.pad(signal, int(frame_length // 2), mode='reflect')
+    signal = np.pad(audio, int(frame_length // 2), mode='reflect')
     
     rms = []
     
-    for i in range(0, len(signal), hop_length):
+    for i in range(0, audio.shape[0], hop_length):
         
         rms_formula = np.sqrt(1 / frame_length * np.sum(signal[i:i+frame_length]**2))        
         rms.append(rms_formula)
         
     return np.array(rms)  
 
-def spectral_centroid(signal, frame_length, hop_length, sr=44100):
+def spectral_centroid(audio, frame_length, hop_length, sr=44100):
 
     """
     As the name suggests, a spectral centroid is the location of the centre of mass of the spectrum. 
@@ -33,11 +33,11 @@ def spectral_centroid(signal, frame_length, hop_length, sr=44100):
     
     # Pad with the reflection of the signal so that the frames are centered 
     # Padding is achieved by mirroring on the first and last values of the signal with frame_length // 2 samples
-    signal = np.pad(signal, int(frame_length // 2), mode='reflect')
+    signal = np.pad(audio, int(frame_length // 2), mode='reflect')
     
     centroid = []
     
-    for i in range(0, len(signal), hop_length):
+    for i in range(0, audio.shape[0], hop_length):
         
         cent = signal[i:i+frame_length]
             
@@ -45,10 +45,10 @@ def spectral_centroid(signal, frame_length, hop_length, sr=44100):
         magnitudes = np.abs(np.fft.fft(cent)) # magnitude of absolute (real) frequency values
         
         # Compute only the positive half of the DFT (i.e 1 + first half)
-        mag = magnitudes[:int(1 + len(magnitudes) // 2)]
+        mag = magnitudes[:int(1 + magnitudes.shape[0] // 2)]
         
         # Compute the center frequencies of each bin
-        freq = np.linspace(0, sr/2, int(1 + len(cent) // 2)) 
+        freq = np.linspace(0, sr/2, int(1 + cent.shape[0] // 2)) 
         
         # Return weighted mean of the frequencies present in the signal
         normalize_mag = mag / np.sum(mag)
@@ -56,7 +56,7 @@ def spectral_centroid(signal, frame_length, hop_length, sr=44100):
         
     return np.array(centroid)
 
-def spectral_bandwidth(signal, frame_length, hop_length, sr=44100, p=2):
+def spectral_bandwidth(audio, frame_length, hop_length, sr=44100, p=2):
 
     """
     Bandwidth is the difference between the upper and lower frequencies in a continuous band of frequencies. 
@@ -66,11 +66,11 @@ def spectral_bandwidth(signal, frame_length, hop_length, sr=44100, p=2):
     
     # Pad with the reflection of the signal so that the frames are centered 
     # Padding is achieved by mirroring on the first and last values of the signal with frame_length // 2 samples
-    signal = np.pad(signal, int(frame_length // 2), mode='reflect')
+    signal = np.pad(audio, int(frame_length // 2), mode='reflect')
     
     bandwidth = []
     
-    for i in range(0, len(signal), hop_length):
+    for i in range(0, audio.shape[0], hop_length):
         
         frame = signal[i:i+frame_length]
             
@@ -78,10 +78,10 @@ def spectral_bandwidth(signal, frame_length, hop_length, sr=44100, p=2):
         magnitudes = np.abs(np.fft.fft(frame)) # magnitude of absolute (real) frequency values
         
         # Compute only the positive half of the DFT (i.e 1 + first half)
-        mag = magnitudes[:int(1 + len(magnitudes) // 2)]
+        mag = magnitudes[:int(1 + magnitudes.shape[0] // 2)]
         
         # Compute the center frequencies of each bin
-        freq = np.linspace(0, sr/2, int(1 + len(frame) // 2))
+        freq = np.linspace(0, sr/2, int(1 + frame.shape[0] // 2))
         
         # Return weighted mean of the frequencies present in the signal
         normalize_mag = mag / np.sum(mag)
